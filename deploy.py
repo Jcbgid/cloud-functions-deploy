@@ -2,7 +2,7 @@ import os
 import subprocess
 import sys
 
-from dev_deploy_def import deploy_vars as dev_deploy_vars, deploy_spec as dev_deploy_spec, GCLOUD_UTIL_CONFIG
+import dev_deploy_def
 
 DEPLOY_DIRECTORY = "_temp_cf_deploy"
 LIB_DIRECTORY = "deps"
@@ -25,9 +25,9 @@ def main():
     cloud_function_name = sys.argv[1]
 
     if dep_env == "dev":
-        env_vars = dev_deploy_vars
-        deploy_spec = dev_deploy_spec
-        gcloud_util_config = DEV_GCLOUD_UTIL_CONFIG
+        env_vars = dev_deploy_def.deploy_vars
+        deploy_spec = dev_deploy_def.deploy_spec
+        gcloud_util_config = dev_deploy_def.GCLOUD_UTIL_CONFIG
     else:
         raise Exception
 
